@@ -70,10 +70,13 @@ ticket_number = 0
 for ticket in tickets:
     for field in ticket:
         is_field_valid = False
-        for item in rules:
-            rule_check = check_all_rules(rules, field)
-            if rule_check == True:
-                is_field_valid = True
+        rule_check = check_all_rules(rules, field)
+        if rule_check == True:
+            is_field_valid = True
+        #for item in rules:
+        #    rule_check = check_all_rules(rules, field)
+        #    if rule_check == True:
+        #        is_field_valid = True
         if is_field_valid == False:
             error_rate += field
             invalid_tickets.add(ticket_number)
@@ -102,7 +105,6 @@ for x in range(len(valid_tickets[0])):
     valid_fields += [possibilities]
 
 while largest_field_size(valid_fields) > 1:
-    print(str(largest_field_size(valid_fields)))
     for current_field in valid_fields:
         if len(current_field) == 1:
             for fields in valid_fields:
